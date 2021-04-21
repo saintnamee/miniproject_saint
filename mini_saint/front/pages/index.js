@@ -50,13 +50,16 @@ const index = () => {
       </Head>
       <div className={styles.container}><Navbar />
         <div className={styles.title}>
-          <h4 color>Welcome</h4>
+          <h4 color>come</h4>
         </div>
-        <div className={styles.list}>
+        {/* <div className={styles.list}>
           {showStudents()}
-        </div>
-
+        </div> */}
+            <h1>test</h1>
+        
       </div>
+
+  
     </Layout>
   );
 };

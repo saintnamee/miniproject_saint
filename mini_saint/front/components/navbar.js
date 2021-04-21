@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import styles from "../styles/Index.module.css";
 
 const Navbar = () => (
     <div>
