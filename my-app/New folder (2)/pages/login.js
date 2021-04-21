@@ -57,7 +57,7 @@ export default function Login({ token }) {
         />
        
       </div> 
-      <div className={styles.text}><label><ins><i><b>Remember Me</b></i></ins></label></div>
+      <div className={styles.text}><label><ins><i><b>Re</b></i></ins></label></div>
     </div>
   );
 
