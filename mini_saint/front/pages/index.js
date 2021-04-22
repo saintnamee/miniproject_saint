@@ -47,6 +47,7 @@ const index = () => {
     <Layout>
       <Head>
         <title>Home Page</title>
+      
       </Head>
       <div className={styles.container}><Navbar />
         <div className={styles.title}>

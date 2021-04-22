@@ -106,11 +106,11 @@ router.get("/", (req, res, next) => {
   res.send("Respond without authentication");
 });
 
-let students = {
-  list: [
-    { "id": 1, "name": "Piyatud", "surname": "Krialest", "major": "COE", "GPA": 2.34 },
-    { "id": 2, "name": "Kittikun", "surname": "mamma", "major": "COE", "GPA": 2.15 }]
-}
+// let students = {
+//   list: [
+//     { "id": 1, "name": "Piyatud", "surname": "Krialest", "major": "COE", "GPA": 2.34 },
+//     { "id": 2, "name": "Kittikun", "surname": "mamma", "major": "COE", "GPA": 2.15 }]
+// }
 
 
 router
