@@ -51,10 +51,9 @@ const index = () => {
       <div className={styles.container}><Navbar />
         <div className={styles.title}>
           <h4 color>come</h4>
+          
         </div>
-        {/* <div className={styles.list}>
-          {showStudents()}
-        </div> */}
+
             <h1>test</h1>
         
       </div>
