@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/student.module.css";
 import withAuth from "../components/withAuth";
 import Navbar from "../components/navbar";
+import config from "../config/config"
 const URL = "http://localhost/api/students";
 const admin = ({ token }) => {
   const [user, setUser] = useState({});
@@ -13,10 +14,11 @@ const admin = ({ token }) => {
   const [GPA, setGPA] = useState(0);
   const [student, setStudent] = useState({});
   useEffect(() => {
-    getStudents();
-    profileUser();
+    // getStudents();
+    // profileUser();
   }, []);
   const profileUser = async () => {
+    console.log("setGPA")
     try {
       
       const users = await axios.get(`${config.URL}/profile`, {
@@ -141,8 +143,8 @@ const admin = ({ token }) => {
         </button>
       </div>
 
-      <div className={styles.list}>{showStudents()}</div>
-      <div className={styles.list1}><b><i><ins>(selected student)</ins></i></b> <b>  Name:</b>{student.name}<b>  Surname:</b>{student.surname} <b>  Major:</b>{student.major}  <b>GPA:</b>{student.GPA}</div>
+      {/* <div className={styles.list}>{showStudents()}</div>
+      <div className={styles.list1}><b><i><ins>(selected student)</ins></i></b> <b>  Name:</b>{student.name}<b>  Surname:</b>{student.surname} <b>  Major:</b>{student.major}  <b>GPA:</b>{student.GPA}</div> */}
     </div>
   );
 };

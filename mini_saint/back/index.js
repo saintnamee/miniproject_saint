@@ -9,7 +9,8 @@ const bcrypt = require("bcrypt");
 
 const db = require("./database.js");
 let users = db.users;
-
+let products = db.products;
+console.log("product",products)
 require("./passport.js");
 
 const router = require("express").Router(),
@@ -99,6 +100,7 @@ router.post("/register", async (req, res) => {
     res.status(422).json({ message: "Cannot register" });
   }
 });
+router.get("/allproduct", (req, res) => res.json(products));
 
 router.get("/alluser", (req, res) => res.json(db.users.users));
 
@@ -106,11 +108,11 @@ router.get("/", (req, res, next) => {
   res.send("Respond without authentication");
 });
 
-// let students = {
-//   list: [
-//     { "id": 1, "name": "Piyatud", "surname": "Krialest", "major": "COE", "GPA": 2.34 },
-//     { "id": 2, "name": "Kittikun", "surname": "mamma", "major": "COE", "GPA": 2.15 }]
-// }
+let students = {
+  list: [
+    { "id": 1, "name": "Piyatud", "surname": "Krialest", "major": "COE", "GPA": 2.34 },
+    { "id": 2, "name": "Kittikun", "surname": "mamma", "major": "COE", "GPA": 2.15 }]
+}
 
 
 router
