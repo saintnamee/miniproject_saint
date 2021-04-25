@@ -5,8 +5,8 @@
     display: flex;
     flex-direction: column;
     align-items: center; 
-  /* justify-content: center; */
-  /* background: url(https://wallpaper.wiki/wp-content/uploads/2017/05/wallpaper.wiki-Beautiful-Full-HD-Wallpaper-Download-Free-PIC-WPE0010098.jpg) no-repeat 50% 50%; */
+    justify-content: center;
+
   background-size: cover;
   
 
