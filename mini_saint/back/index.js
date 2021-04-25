@@ -10,6 +10,7 @@ const bcrypt = require("bcrypt");
 const db = require("./database.js");
 let users = db.users;
 let products = db.products;
+let carts = db.carts;
 console.log("product",products)
 require("./passport.js");
 
@@ -102,7 +103,48 @@ router.post("/register", async (req, res) => {
 });
 router.get("/allproduct", (req, res) => res.json(products));
 
+router
+  .route("/cart/:userid")
+  .post((req, res) => {
+    console.log(req.body);
+    let newcart = {};
+    newcart.id = carts.length ? carts[carts.length - 1].id + 1 : 1;
+    newcart.productsname = req.body.productsname;
+    newcart.discription = req.body.discription;
+    newcart.price = req.body.price;
+    newcart.imageurl = req.body.imageurl;
+    newcart.amount = req.body.amount ;
+    newcart.userid = req.params.userid;
+    carts = [...carts,newcart]
+    res.json(newcart);
+  })
+  .get((req, res) => {
+    let cart = carts.filter((item) => item.userid == req.params.userid)
+   
+    if(cart){
+    let data = []
+    data.push(cart)
+      res.json(data);
+
+    }
+     
+    res.json([]);
+  })
+  .put((req, res) => {
+    let cart = carts.find((item) => item.id == req.body.cartid ); 
+    cart.amount = req.body.amount
+    
+    res.json(cart);
+  })
+  .delete((req, res) => {
+    let cart = carts.find((item) => item.id == req.body.cartid ); 
+    
+    res.json();
+
+  });
+
 router.get("/alluser", (req, res) => res.json(db.users.users));
+
 
 router.get("/", (req, res, next) => {
   res.send("Respond without authentication");
@@ -113,7 +155,6 @@ let students = {
     { "id": 1, "name": "Piyatud", "surname": "Krialest", "major": "COE", "GPA": 2.34 },
     { "id": 2, "name": "Kittikun", "surname": "mamma", "major": "COE", "GPA": 2.15 }]
 }
-
 
 router
   .route("/students")
