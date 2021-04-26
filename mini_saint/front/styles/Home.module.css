@@ -10,6 +10,17 @@
     
 
 }
+.products{
+    min-height: 50vh;
+    margin-top: 16px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    /* background-color: rgb(252, 218, 109); */
+
+}
 
 .content {
     min-width: 25vw;

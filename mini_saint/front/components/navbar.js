@@ -34,7 +34,7 @@ const Navbar = () => {
               Coffee SaiNt
             </Typography>
             <Link href="/"><Button color="inherit">Home</Button></Link> 
-            <Link href="/foo"><Button color="inherit">Product</Button></Link> 
+            <Link href="/product"><Button color="inherit">Product</Button></Link> 
             <Link href="/login"><Button color="inherit">Login</Button></Link> 
             <Link href="/register"><Button color="inherit">Sing up</Button></Link> 
             <Link href="/logout"><Button color="inherit">Logout</Button></Link> 

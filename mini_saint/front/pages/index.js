@@ -53,7 +53,7 @@ const index = () => {
       </Head>
       <Navbar />
       <div className={styles.container}>
-      <Slitbox/>
+      {/* <Slitbox/> */}
       <Card/>
         
       </div>
