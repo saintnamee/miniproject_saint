@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
 import Navbar from '../components/navbar'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import styles from '../styles/Home.module.css'
 import axios from 'axios'
 import withAuth from '../components/withAuth'
@@ -14,18 +14,41 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton'
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
+const useStyles = makeStyles({
+    table: {
+      minWidth: 650,
+    },
+  });
 
 const Cart = ({ token }) => {
+
+    const [carts,setcarts] = useState([]) 
     const getcart =async()=>{
-        let cart = await axios.get(`${config.URL}/cart`)
-        setcarts(cart.data)
-        console.log("data>>>>", allproduct.data);
+        let cart = await axios.get(`${config.URL}/cart/2`)
+        setcarts(cart.data[0])
+        console.log("cart>>>>", cart);
       } 
       useEffect(() =>{
-        getcarts()
+        getcart()
       },[]) 
 
-    const classes = useStyles();
+      const classes = useStyles();
+      let data = [
+          {id:1, productsname: 'ลาเต้', amount: 3, price: 30 }
+      ]
+      const minus = ()=>{
+          console.log('minus');
+      }
+      const plus = ()=>{
+          console.log('plus');
+      }
+      const remove = ()=>{
+          console.log('delete');
+      }
     
 
     return (
@@ -33,50 +56,60 @@ const Cart = ({ token }) => {
             <Head>
                 <title>User profile</title>
             </Head>
-            <div className={styles.container}>
-                <Navbar />
-                <h1>User profile</h1>
-                <div>
-                <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>ลำดับที่</TableCell>
-            <TableCell align="right">ชื่อสินค้า</TableCell>
-            <TableCell align="right">จำนวน</TableCell>
-            <TableCell align="right">ราคา</TableCell>
-            <TableCell align="right">ราคารวม</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+            <Navbar />
 
-                </div>
-                <div>
-                    <b>Token:</b> {token.substring(0, 15)}... <br /><br />
-                    This route is protected by token, user is required to login first.
-                    <br/>
-                    Otherwise, it will be redirect to Login page
-                    <br/><br/>
-                    {JSON.stringify(user)}
-                </div>
-            </div>
+          <TableContainer component={Paper}>
+            <Table className={classes.table} aria-label="simple table">
+                <TableHead>
+                <TableRow>
+                    <TableCell>ลำดับที่</TableCell>
+                    <TableCell align="right">ชื่อสินค้า</TableCell>
+                    <TableCell >จำนวน</TableCell>
+                    <TableCell align="right">ราคา</TableCell>
+                    <TableCell align="right">ราคารวม</TableCell>
+                    <TableCell align="right"></TableCell>
+                </TableRow>
+                </TableHead>
+                <TableBody>
+                    {carts.map((row, index) => (
+                        <TableRow key={row.id}>
+                        <TableCell component="th" scope="row">{index+1}</TableCell>
+                        <TableCell align="right">{row.productsname}</TableCell>
+                        <TableCell >
+                            <div style={{display: 'flex'}}>
+                            <IconButton color="primary" aria-label="upload picture" component="span">
+                                <RemoveIcon onClick={()=> minus()} />
+                            </IconButton>
+                             <p>{row.amount}</p>
+                            <IconButton color="primary" aria-label="upload picture" component="span">
+                                <AddIcon onClick={()=> plus()} />
+                            </IconButton>
+                            </div>
+                            </TableCell>
+                        <TableCell align="right">{row.price}</TableCell>
+                        <TableCell align="right">{row.price * row.amount}</TableCell>
+                        <TableCell align="right">
+                            <IconButton color="primary" aria-label="upload picture" component="span">
+                                <DeleteIcon onClick={()=> remove()} />
+                            </IconButton>
+                        </TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+          </TableContainer>
+  
+
+                
+
+            
         </Layout>
     )
 }
 
-export default withAuth(Cart)
+// export default withAuth(Cart)
+export default Cart
+export function getServerSideProps({ req, res }) {
+    return { props: { token: req.cookies.token || "" } };
+}
 
