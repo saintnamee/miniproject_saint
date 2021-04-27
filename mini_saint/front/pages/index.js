@@ -38,11 +38,12 @@ const Index = () => {
       
       </Head>
       <Navbar />
+      
       <div className={styles.container}>
         <div style={{display:'flex'}} >{
           products.map((item)=>{
             return (<div style={{margin:5}}>
-            <Card/>
+            <Card productsname={item.productsname} discription={item.discription} price={item.price}imageurl={item.imageurl}/>
            </div> )
           })
         }

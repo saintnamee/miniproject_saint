@@ -37,7 +37,8 @@ const Navbar = () => {
             <Link href="/product"><Button color="inherit">Product</Button></Link> 
             <Link href="/login"><Button color="inherit">Login</Button></Link> 
             <Link href="/register"><Button color="inherit">Sing up</Button></Link> 
-            <Link href="/logout"><Button color="inherit">Logout</Button></Link> 
+            <Link href="/logout"><Button color="inherit">Logout</Button></Link>
+            <Link href="/cart"><Button color="inherit">cart</Button></Link>  
             
           
       
