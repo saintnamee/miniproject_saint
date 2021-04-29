@@ -50,8 +50,10 @@ const Cart = ({ token }) => {
         getcart();
           console.log('plus');
       }
-      const remove = ()=>{
+      const remove =async (id)=>{
+        await axios.delete(`${config.URL}/cart/2`,{cartid:id})
           console.log('delete');
+        getcart();
       }
       
 
@@ -94,7 +96,7 @@ const Cart = ({ token }) => {
                         <TableCell align="right">{row.price * row.amount}</TableCell>
                         <TableCell align="right">
                             <IconButton color="primary" aria-label="upload picture" component="span">
-                                <DeleteIcon onClick={()=> remove()} />
+                                <DeleteIcon onClick={()=> remove(row.id)} />
                             </IconButton>
                         </TableCell>
                         </TableRow>

@@ -10,10 +10,12 @@ import Slitbox from "../components/slitbox"
 import config from "../config/config"
 import { Container, Row, Col } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.css'
+import {Grid} from "@material-ui/core"
+import { users } from '../../back/database';
 const URL = "http://localhost/api/students";
 const URL_SEL = "http://localhost/api/purchase";
 const fetcher = (key) => fetch(key).then((res) => res.json());
-const Index = () => {
+const Index = ({token}) => {
   // const { data, error } = useSWR(URL, fetcher, { revalidateOnFocus: false });
   // if (error) return <div>failed to load</div>;
   // if (!data) return <div>Loading...</div>;
@@ -24,6 +26,7 @@ const Index = () => {
   //   mutate(URL, data);
   // }
   const [products,setProducts] = useState([])
+  const [user,setUser] = useState([])
     const getProducts =async()=>{
       let allproduct = await axios.get(`${config.URL}/allproduct`)
       setProducts(allproduct.data)
@@ -31,7 +34,22 @@ const Index = () => {
     } 
   useEffect(() =>{
     getProducts()
+    profileUser()
   },[]) 
+  const profileUser = async () => {
+    try {
+
+        const users = await axios.get(`${config.URL}/profile`, {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+       console.log('profileUser>>>',users)
+        setUser(users.data)
+    }
+    catch (e) {
+        console.log(e)
+    }
+
+}
 
   return (
     <Layout>
@@ -45,14 +63,20 @@ const Index = () => {
       </div>
       
       <div className={styles.container}>
-        <div style={{display:'flex'}} >{
+      <Grid container spacing={1} >
+        {
           products.map((item)=>{
-            return (<div style={{margin:5}}>
-            <Card id={item.id} productsname={item.productsname} discription={item.discription} price={item.price}imageurl={item.imageurl}/>
-           </div> )
+            return (
+              
+            <Grid container item md={3} >
+            <Card id={item.id} productsname={item.productsname} discription={item.discription} price={item.price}imageurl={item.imageurl} userid={user.id}/>
+            </Grid>
+            
+            )
           })
         }
-        </div>
+        </Grid>
+        
       </div>
       
 
@@ -60,3 +84,6 @@ const Index = () => {
   );
 };
 export default Index;
+export function getServerSideProps({ req, res }) {
+  return { props: { token: req.cookies.token || "" } };
+}

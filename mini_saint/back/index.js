@@ -137,8 +137,8 @@ router
     res.json(cart);
   })
   .delete((req, res) => {
-    let cart = carts.find((item) => item.id == req.body.cartid ); 
-    
+    let i = carts.findIndex((item) => item.id == req.body.cartid ); 
+    carts.splice(i,1)
     res.json();
 
   });

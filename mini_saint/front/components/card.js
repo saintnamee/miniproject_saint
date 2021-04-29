@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { formatMs, makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import axios from 'axios'
@@ -20,6 +20,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button';
 import { Container, Row, Col } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.css'
+import {useRouter} from 'next/router'
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -28,27 +29,28 @@ const useStyles = makeStyles((theme) => ({
     height: 0,
     paddingTop: '56.25%', // 16:9
   },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: red[500],
-  },
+  // expand: {
+  //   transform: 'rotate(0deg)',
+  //   marginLeft: 'auto',
+  //   transition: theme.transitions.create('transform', {
+  //     duration: theme.transitions.duration.shortest,
+  //   }),
+  // },
+  // expandOpen: {
+  //   transform: 'rotate(180deg)',
+  // },
+  // avatar: {
+  //   backgroundColor: red[500],
+  // },
 }));
 
 
- const Cade = ({id,productsname,discription,price,imageurl,}) => {
+ const Cade = ({id,productsname,discription,price,imageurl,userid}) => {
   const addToCart = async ()=>{
-    let cart = await axios.post(`${config.URL}/cart/2`,{id: id,productsname: productsname,discription: discription,price: price,imageurl:imageurl,amount:1 })
+    let cart = await axios.post(`${config.URL}/cart/${userid}`,{id: id,productsname: productsname,discription: discription,price: price,imageurl:imageurl,amount:1 })
   }
 
+  const router = useRouter();
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -75,7 +77,12 @@ const useStyles = makeStyles((theme) => ({
         </Typography>
         <h3>{price}</h3>
         {/* <Button variant="contained">Default</Button> */}
-        <Button variant="contained" color="primary" onClick={()=> addToCart()}>
+        <Button variant="contained" color="primary" onClick={()=>{
+          if(userid){
+              addToCart()
+          } eles
+            router.push('/login')
+        }}>
         เลือกซื้อ
         </Button>
       </CardContent>
