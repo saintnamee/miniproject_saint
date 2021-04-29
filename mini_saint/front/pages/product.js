@@ -39,25 +39,11 @@ const Procdutes = ({ token }) => {
 
             </Head>
             <Navbar />
-            
-            {/* <div className={styles.products}>
-                <div>
-                <img  src="https://www.coffeefavour.com/wp-content/uploads/2016/05/cafe-latte-art_5166479-1024x576.jpg"alt="latte"/>
-                <img  src="https://www.coffeefavour.com/wp-content/uploads/2016/04/capuccino.jpg"alt="cappuccino"/>
-                <img  src="https://www.coffeefavour.com/wp-content/uploads/2016/05/cafe-latte-art_5166479-1024x576.jpg"alt="latte"/>
-                <img  src="https://www.coffeefavour.com/wp-content/uploads/2016/05/cafe-latte-art_5166479-1024x576.jpg"alt="latte"/>
-                </div>
-            
-                <h1>Coffee Saint</h1>
-                <div>
-                    <b>Token:</b> {token.substring(0, 15)}... <br /><br />
-                    This route is protected by token, user is required to login first.
-                    <br/>
-                    Otherwise, it will be redirect to Login page
-                    <br/><br/>
-                    {JSON.stringify(user)}
-                </div>
-            </div> */}
+            <div className={styles.container}>
+                
+                <h1>sadd</h1>
+            </div>
+
         </Layout>
     )
 }

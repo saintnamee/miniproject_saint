@@ -10,6 +10,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Badge from '@material-ui/core/Badge';
 import { withStyles } from '@material-ui/core/styles';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,9 +37,11 @@ const Navbar = () => {
         <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <Link href="/"><Button color="inherit">
+            <IconButton edge="start" className={classes.menuButton} color="black" aria-label="menu">
               <MenuIcon />
             </IconButton>
+            </Button></Link> 
             <Typography variant="h6" className={classes.title}>
               Coffee SaiNt
               
@@ -47,7 +50,6 @@ const Navbar = () => {
             <Link href="/product"><Button color="inherit">Product</Button></Link> 
             <Link href="/login"><Button color="inherit">Login</Button></Link> 
             <Link href="/register"><Button color="inherit">Sing up</Button></Link> 
-            <Link href="/logout"><Button color="inherit">Logout</Button></Link>
             <Link href="/cart"><Button color="inherit"> 
             {/* </Button></Link>   */}
 
@@ -57,7 +59,13 @@ const Navbar = () => {
             </useStyles>
             </IconButton>
             </Button></Link>
-      
+            <Link href="/logout"><Button color="inherit">
+            <IconButton aria-label="logout">
+            <useStyles badgeContent={4} color="secondary">
+            <ExitToAppIcon />
+            </useStyles>
+            </IconButton>
+            </Button></Link>
           </Toolbar>
         </AppBar>
       </div>

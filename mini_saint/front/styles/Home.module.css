@@ -5,8 +5,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(252, 218, 109);
-    border: 30px solid rgb(255, 0, 0);
+    /* background-color: rgb(252, 218, 109);
+    /* border: 30px solid rgb(255, 0, 0); */
+    /* background-color: lightblue; */
+    /* background-color: #ffffff; */
+    background-image: url("https://www.coffeewithconscience.org/wp-content/uploads/2017/04/coffee-with-conscience-bg-e1491480828229.jpg");
+    background-repeat: no-repeat;
+    background-position: right top;
     
 
 }
@@ -118,7 +123,7 @@
       border: 2px solid red;
   }
   .btn2{
-    background-color: rgb(34, 183, 233);
+    background-color: rgb(33, 200, 133);
     border-radius: 10%;
     border: none;
     color: white;
