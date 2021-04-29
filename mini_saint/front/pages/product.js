@@ -7,7 +7,7 @@ import axios from 'axios'
 import withAuth from '../components/withAuth'
 import config from '../config/config'
 
-const Foo1 = ({ token }) => {
+const Procdutes = ({ token }) => {
 
     const [user, setUser] = useState({})
 
@@ -31,13 +31,16 @@ const Foo1 = ({ token }) => {
     }
 
     return (
+        
         <Layout>
             <Head>
-                <title>Coffee Saint</title>
+            
+                <title>Bootstrap Example</title>
+
             </Head>
             <Navbar />
             
-            <div className={styles.products}>
+            {/* <div className={styles.products}>
                 <div>
                 <img  src="https://www.coffeefavour.com/wp-content/uploads/2016/05/cafe-latte-art_5166479-1024x576.jpg"alt="latte"/>
                 <img  src="https://www.coffeefavour.com/wp-content/uploads/2016/04/capuccino.jpg"alt="cappuccino"/>
@@ -54,12 +57,13 @@ const Foo1 = ({ token }) => {
                     <br/><br/>
                     {JSON.stringify(user)}
                 </div>
-            </div>
+            </div> */}
         </Layout>
     )
 }
 
-export default withAuth(Foo1)
+// export default withAuth(Foo1)
+export default Procdutes
 
 export function getServerSideProps({ req, res }) {
     return { props: { token: req.cookies.token || "" } };

@@ -31,7 +31,12 @@ const Cart = ({ token }) => {
         let cart = await axios.get(`${config.URL}/cart/2`)
         setcarts(cart.data[0])
         console.log("cart>>>>", cart);
-      } 
+      }
+    // const putcart =async()=>{
+    //     let cart = await axios.put(`${config.URL}/cart/2`)
+    //     setcarts(cart.data[0])
+    //     console.log("cart>>>>", cart);
+     
       useEffect(() =>{
         getcart()
       },[]) 
@@ -49,7 +54,7 @@ const Cart = ({ token }) => {
       const remove = ()=>{
           console.log('delete');
       }
-    
+      
 
     return (
         <Layout>
