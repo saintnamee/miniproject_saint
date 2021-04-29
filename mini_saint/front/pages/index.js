@@ -8,6 +8,8 @@ import Navbar from "../components/navbar";
 import Card from "../components/card"; 
 import Slitbox from "../components/slitbox"
 import config from "../config/config"
+import { Container, Row, Col } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.css'
 const URL = "http://localhost/api/students";
 const URL_SEL = "http://localhost/api/purchase";
 const fetcher = (key) => fetch(key).then((res) => res.json());
@@ -38,6 +40,9 @@ const Index = () => {
       
       </Head>
       <Navbar />
+      <div>
+        <h1></h1>
+      </div>
       
       <div className={styles.container}>
         <div style={{display:'flex'}} >{
@@ -49,13 +54,8 @@ const Index = () => {
         }
         </div>
       </div>
-      {/* <div className={styles.container}>
-      <Slitbox/>
-      <Card/>
-        
-      </div> */}
+      
 
-  
     </Layout>
   );
 };

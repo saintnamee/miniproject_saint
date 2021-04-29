@@ -18,6 +18,8 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button';
+import { Container, Row, Col } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.css'
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -55,6 +57,7 @@ const useStyles = makeStyles((theme) => ({
   };
 
   return (
+    
     <Card className={classes.root}>
       <CardHeader
  
@@ -122,6 +125,7 @@ const useStyles = makeStyles((theme) => ({
         </CardContent>
       </Collapse> */}
     </Card>
+    
   );
 }
 export default Cade
