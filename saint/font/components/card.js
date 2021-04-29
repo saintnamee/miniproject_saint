@@ -24,6 +24,9 @@ import {useRouter} from 'next/router'
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
+    with: 80,
+    height: 120,
+
   },
   media: {
     height: 0,

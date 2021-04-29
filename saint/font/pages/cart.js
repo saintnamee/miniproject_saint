@@ -25,15 +25,16 @@ const useStyles = makeStyles({
   });
 
 const Cart = ({ token }) => {
-
+  const [user,setUser] = useState([])
     const [carts,setcarts] = useState([]) 
     const getcart =async()=>{
-        let cart = await axios.get(`${config.URL}/cart/2`)
+        let cart = await axios.get(`${config.URL}/cart/${user.id}`)
         setcarts(cart.data[0])
         console.log("cart>>>>", cart);
       }
       useEffect(() =>{
-        getcart()
+        profileUser()
+        
       },[]) 
 
       const classes = useStyles();
@@ -55,7 +56,21 @@ const Cart = ({ token }) => {
           console.log('delete');
         getcart();
       }
-      
+      const profileUser = async () => {
+        try {
+    
+            const users = await axios.get(`${config.URL}/profile`, {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+           console.log('profileUser>>>',users)
+            setUser(users.data)
+            getcart()
+        }
+        catch (e) {
+            console.log(e)
+        }
+    
+    }
 
     return (
         <Layout>
@@ -113,8 +128,8 @@ const Cart = ({ token }) => {
     )
 }
 
-// export default withAuth(Cart)
-export default Cart
+export default withAuth(Cart)
+
 export function getServerSideProps({ req, res }) {
     return { props: { token: req.cookies.token || "" } };
 }
