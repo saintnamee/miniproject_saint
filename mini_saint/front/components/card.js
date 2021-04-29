@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
+import axios from 'axios'
+import config from '../config/config'
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
@@ -15,7 +17,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-
+import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -39,7 +41,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
- const Cade = ({productsname,discription,price,imageurl}) => {
+
+ const Cade = ({id,productsname,discription,price,imageurl,}) => {
+  const addToCart = async ()=>{
+    let cart = await axios.post(`${config.URL}/cart/2`,{id: id,productsname: productsname,discription: discription,price: price,imageurl:imageurl,amount:1 })
+  }
+
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -64,6 +71,10 @@ const useStyles = makeStyles((theme) => ({
          {discription}
         </Typography>
         <h3>{price}</h3>
+        {/* <Button variant="contained">Default</Button> */}
+        <Button variant="contained" color="primary" onClick={()=> addToCart()}>
+        เลือกซื้อ
+        </Button>
       </CardContent>
       {/* <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">

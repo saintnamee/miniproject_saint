@@ -32,11 +32,6 @@ const Cart = ({ token }) => {
         setcarts(cart.data[0])
         console.log("cart>>>>", cart);
       }
-    // const putcart =async()=>{
-    //     let cart = await axios.put(`${config.URL}/cart/2`)
-    //     setcarts(cart.data[0])
-    //     console.log("cart>>>>", cart);
-     
       useEffect(() =>{
         getcart()
       },[]) 
@@ -45,10 +40,14 @@ const Cart = ({ token }) => {
       let data = [
           {id:1, productsname: 'ลาเต้', amount: 3, price: 30 }
       ]
-      const minus = ()=>{
+      const minus = async(amount,id)=>{
+        await axios.put(`${config.URL}/cart/2`,{cartid: id ,amount: amount -1})
+        getcart();
           console.log('minus');
       }
-      const plus = ()=>{
+      const plus =async(amount,id)=>{
+        await axios.put(`${config.URL}/cart/2`,{cartid: id ,amount: amount +1})
+        getcart();
           console.log('plus');
       }
       const remove = ()=>{
@@ -83,11 +82,11 @@ const Cart = ({ token }) => {
                         <TableCell >
                             <div style={{display: 'flex'}}>
                             <IconButton color="primary" aria-label="upload picture" component="span">
-                                <RemoveIcon onClick={()=> minus()} />
+                                <RemoveIcon onClick={()=> minus(row.amount,row.id)} />
                             </IconButton>
                              <p>{row.amount}</p>
                             <IconButton color="primary" aria-label="upload picture" component="span">
-                                <AddIcon onClick={()=> plus()} />
+                                <AddIcon onClick={()=> plus(row.amount,row.id)} />
                             </IconButton>
                             </div>
                             </TableCell>

@@ -43,7 +43,7 @@ const Index = () => {
         <div style={{display:'flex'}} >{
           products.map((item)=>{
             return (<div style={{margin:5}}>
-            <Card productsname={item.productsname} discription={item.discription} price={item.price}imageurl={item.imageurl}/>
+            <Card id={item.id} productsname={item.productsname} discription={item.discription} price={item.price}imageurl={item.imageurl}/>
            </div> )
           })
         }
