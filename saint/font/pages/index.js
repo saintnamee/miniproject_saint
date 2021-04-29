@@ -15,7 +15,7 @@ import { users } from '../../back/database';
 const URL = "http://localhost/api/students";
 const URL_SEL = "http://localhost/api/purchase";
 const fetcher = (key) => fetch(key).then((res) => res.json());
-const Index = () => {
+const Index = ({token}) => {
   // const { data, error } = useSWR(URL, fetcher, { revalidateOnFocus: false });
   // if (error) return <div>failed to load</div>;
   // if (!data) return <div>Loading...</div>;
@@ -83,7 +83,7 @@ const Index = () => {
     </Layout>
   );
 };
-export default Index;
-export function getServerSideProps({ req, res }) {
-  return { props: { token: req.cookies.token || "" } };
-}
+// export default Index;
+// export function getServerSideProps({ req, res }) {
+//   return { props: { token: req.cookies.token || "" } };
+// }
