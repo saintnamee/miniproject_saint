@@ -5,58 +5,69 @@ import axios from "axios";
 import React, { } from "react";
 import styles from "../styles/Index.module.css";
 import Navbar from "../components/navbar";
+import {Grid} from "@material-ui/core";
+// import React, { useEffect, useState } from "react";
+import Card from "../components/card"; 
+// import {users} from '../../back/database';
 const URL = "http://localhost/api/students";
 const URL_SEL = "http://localhost/api/purchase";
 const fetcher = (key) => fetch(key).then((res) => res.json());
 const index = () => {
-  const { data, error } = useSWR(URL, fetcher, { revalidateOnFocus: false });
-  if (error) return <div>failed to load</div>;
-  if (!data) return <div>Loading...</div>;
-  console.log("data", data);
+//   const [products,setProducts] = useState([])
+//   const [user,setUser] = useState([])
+//     const getProducts =async()=>{
+//       let allproduct = await axios.get(`${config.URL}/allproduct`)
+//       setProducts(allproduct.data)
+//       console.log("data>>>>", allproduct.data);
+//     } 
+//   useEffect(() =>{
+//     getProducts()
+//     profileUser()
+//   },[]) 
+//   const profileUser = async () => {
+//     try {
 
-  const selStu = async (id) => {
-    let result = await axios.post(`${URL_SEL}/${id}`)
-    mutate(URL, data);
-  }
+//         const users = await axios.get(`${config.URL}/profile`, {
+//             headers: { Authorization: `Bearer ${token}` }
+//         })
+//        console.log('profileUser>>>',users)
+//         setUser(users.data)
+//     }
+//     catch (e) {
+//         console.log(e)
+//     }
 
-  const showStudents = () => {
-    if (data.list && data.list.length) {
-      return data.list.map((item, index) => {
-        return (
-          <div className={styles.listItem} key={index}>
-            <div><b>Name:</b> {item.name}</div>
-            <div><b>Surname:</b> {item.surname}</div>
-            <div> <b>Major:</b> {item.major} </div>
-            <div><b>GPA:</b> {item.GPA}</div>
-
-            <div>
-              <button
-                className={styles.btn}
-                onClick={() => selStu(item.id)}
-              >
-                Select
-            </button></div>
-          </div>
-        );
-      });
-    } else {
-      return <p>Loading...</p>;
-    }
-  };
+// }
   return (
     <Layout>
       <Head>
         <title>Home Page</title>
+      
       </Head>
-      <div className={styles.container}><Navbar />
-        <div className={styles.title}>
-          <h4 color>Welcome</h4>
-        </div>
-        <div className={styles.list}>
-          {showStudents()}
-        </div>
-
+      <Navbar />
+      <div>
+        <h1></h1>
       </div>
+      
+      
+      <div className={styles.container}> 
+      {/* <Grid container spacing={1} >
+        {
+          products.map((item)=>{
+            return (
+              
+            <Grid container item md={3} >
+            <Card id={item.id} productsname={item.productsname} discription={item.discription} price={item.price}imageurl={item.imageurl userid={user.id}} />
+            </Grid>
+            
+            )
+          })
+        }
+        </Grid> */}
+       
+      </div>
+       
+
     </Layout>
   );
 };

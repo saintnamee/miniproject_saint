@@ -4,10 +4,12 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    align-items: center; 
     justify-content: center;
-    align-items: center;
-    background-color:rgb(252, 218, 109);
-    border: 30px solid rgb(255, 0, 0);
+    
+    background-size: cover;
+  
+
 }
 
 .title {
@@ -65,5 +67,10 @@
     font-size: 1rem;
     margin-top: 10px;
     border: 2px solid brown;
+}
+
+.test{
+    color: red ;
+    border: 5;
 }
 
