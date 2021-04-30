@@ -24,12 +24,13 @@ import {useRouter} from 'next/router'
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
-    with: 80,
-    height: 120,
+    width: 350,
+    height: 450,
 
   },
   media: {
-    height: 0,
+    height: 200,
+    width: 300,
     paddingTop: '56.25%', // 16:9
   },
   // expand: {
@@ -83,8 +84,10 @@ const useStyles = makeStyles((theme) => ({
         <Button variant="contained" color="primary" onClick={()=>{
           if(userid){
               addToCart()
-          } eles
+          } else {
             router.push('/login')
+          }
+            
         }}>
         เลือกซื้อ
         </Button>

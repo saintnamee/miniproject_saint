@@ -27,8 +27,9 @@ const useStyles = makeStyles({
 const Cart = ({ token }) => {
   const [user,setUser] = useState([])
     const [carts,setcarts] = useState([]) 
-    const getcart =async()=>{
-        let cart = await axios.get(`${config.URL}/cart/${user.id}`)
+    const getcart =async(id)=>{
+      console.log("user.id>>>>", id);
+        let cart = await axios.get(`${config.URL}/cart/${id}`)
         setcarts(cart.data[0])
         console.log("cart>>>>", cart);
       }
@@ -43,18 +44,18 @@ const Cart = ({ token }) => {
       ]
       const minus = async(amount,id)=>{
         await axios.put(`${config.URL}/cart/2`,{cartid: id ,amount: amount -1})
-        getcart();
+        getcart(user.id);
           console.log('minus');
       }
       const plus =async(amount,id)=>{
         await axios.put(`${config.URL}/cart/2`,{cartid: id ,amount: amount +1})
-        getcart();
+        getcart(user.id);
           console.log('plus');
       }
       const remove =async (id)=>{
         await axios.delete(`${config.URL}/cart/2`,{cartid:id})
           console.log('delete');
-        getcart();
+        getcart(user.id);
       }
       const profileUser = async () => {
         try {
@@ -64,7 +65,7 @@ const Cart = ({ token }) => {
             })
            console.log('profileUser>>>',users)
             setUser(users.data)
-            getcart()
+            getcart(users.data.id)
         }
         catch (e) {
             console.log(e)
