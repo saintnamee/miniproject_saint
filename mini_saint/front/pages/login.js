@@ -30,7 +30,7 @@ export default function Login({ token }) {
 
   const loginForm = () => (
     <div className={styles.gridContainer}>
-      <div><b>Username:</b></div>
+      <div className={styles.text}><b>Username:</b></div>
       <div>
         <input
           type="text"
@@ -39,7 +39,7 @@ export default function Login({ token }) {
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
-      <div><b>Password:</b></div>
+      <div className={styles.text}><b>Password:</b></div>
       <div>
         <input
           type="password"

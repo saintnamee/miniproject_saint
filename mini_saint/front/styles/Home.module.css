@@ -9,7 +9,7 @@
     /* border: 30px solid rgb(255, 0, 0); */
     /* background-color: lightblue; */
     /* background-color: #ffffff; */
-    background-image: url("https://www.coffeewithconscience.org/wp-content/uploads/2017/04/coffee-with-conscience-bg-e1491480828229.jpg");
+    background-image: url("https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Ftimes%2Fprod%2Fweb%2Fbin%2F2d629284-8a24-11ea-8030-261bf7d8ac38.jpg?crop=4963%2C2792%2C294%2C628");
     background-repeat: no-repeat;
     background-position: right top;
     
@@ -26,7 +26,7 @@
     border: 4px solid rgb(20, 14, 14);
     padding: 2rem;
     border-radius: 5px;
-    background-color: rgb(199, 121, 48);
+    background-color: rgba(170, 139, 111, 0.521);
 }
 .list > div{
     margin: 5px 0px;
